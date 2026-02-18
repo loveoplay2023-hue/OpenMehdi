@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#161b22;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00c6ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7b2ff7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00c6ff" />
+      <stop offset="100%" style="stop-color:#a855f7" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="280" fill="url(#bgGrad)" rx="16"/>
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff08" stroke-width="0.5"/>
+  </pattern>
+  <rect width="900" height="280" fill="url(#grid)" rx="16"/>
+
+  <!-- Glow orb left -->
+  <circle cx="120" cy="140" r="90" fill="#7b2ff720" filter="url(#softGlow)"/>
+  <!-- Glow orb right -->
+  <circle cx="780" cy="140" r="70" fill="#00c6ff18" filter="url(#softGlow)"/>
+
+  <!-- Left accent line -->
+  <rect x="0" y="0" width="4" height="280" fill="url(#accentGrad)" rx="2"/>
+
+  <!-- Brain/AI Icon (stylized) -->
+  <g transform="translate(68, 80)" filter="url(#glow)">
+    <!-- Brain outline -->
+    <ellipse cx="52" cy="55" rx="38" ry="42" fill="none" stroke="url(#accentGrad)" stroke-width="2.5"/>
+    <!-- Brain segments -->
+    <path d="M52 13 Q80 25 78 55 Q80 80 52 97" fill="none" stroke="url(#accentGrad)" stroke-width="1.8" stroke-dasharray="4,3"/>
+    <path d="M52 13 Q24 25 26 55 Q24 80 52 97" fill="none" stroke="url(#accentGrad)" stroke-width="1.8" stroke-dasharray="4,3"/>
+    <line x1="14" y1="55" x2="90" y2="55" stroke="#00c6ff50" stroke-width="1"/>
+    <!-- Neural dots -->
+    <circle cx="52" cy="13" r="3.5" fill="#00c6ff" filter="url(#glow)"/>
+    <circle cx="52" cy="97" r="3.5" fill="#a855f7" filter="url(#glow)"/>
+    <circle cx="14" cy="55" r="3" fill="#7b2ff7" filter="url(#glow)"/>
+    <circle cx="90" cy="55" r="3" fill="#00c6ff" filter="url(#glow)"/>
+    <circle cx="26" cy="30" r="2.5" fill="#a855f7" filter="url(#glow)"/>
+    <circle cx="78" cy="30" r="2.5" fill="#00c6ff" filter="url(#glow)"/>
+    <circle cx="26" cy="80" r="2.5" fill="#00c6ff" filter="url(#glow)"/>
+    <circle cx="78" cy="80" r="2.5" fill="#a855f7" filter="url(#glow)"/>
+    <!-- Center pulse -->
+    <circle cx="52" cy="55" r="6" fill="#7b2ff7" opacity="0.9" filter="url(#glow)"/>
+    <circle cx="52" cy="55" r="3" fill="#ffffff" opacity="0.95"/>
+  </g>
+
+  <!-- Main Title -->
+  <text x="210" y="118" font-family="'Segoe UI', 'SF Pro Display', system-ui, sans-serif" font-size="62" font-weight="800" letter-spacing="-2" fill="url(#textGrad)" filter="url(#glow)">OpenMehdi</text>
+
+  <!-- Tagline -->
+  <text x="213" y="155" font-family="'Segoe UI', system-ui, sans-serif" font-size="18" font-weight="400" fill="#8b949e" letter-spacing="1">Ton Assistant IA Personnel</text>
+
+  <!-- Divider line -->
+  <line x1="213" y1="172" x2="740" y2="172" stroke="url(#accentGrad)" stroke-width="1" opacity="0.5"/>
+
+  <!-- Feature pills -->
+  <!-- Multilingue -->
+  <rect x="213" y="186" width="118" height="28" rx="14" fill="#00c6ff15" stroke="#00c6ff40" stroke-width="1"/>
+  <text x="272" y="205" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#00c6ff" text-anchor="middle">AR · FR · EN · Darija</text>
+
+  <!-- Multi-agent -->
+  <rect x="341" y="186" width="108" height="28" rx="14" fill="#a855f715" stroke="#a855f740" stroke-width="1"/>
+  <text x="395" y="205" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#a855f7" text-anchor="middle">Multi-Agent</text>
+
+  <!-- Local-first -->
+  <rect x="459" y="186" width="100" height="28" rx="14" fill="#7b2ff715" stroke="#7b2ff740" stroke-width="1"/>
+  <text x="509" y="205" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#c084fc" text-anchor="middle">Local-First</text>
+
+  <!-- Maroc -->
+  <rect x="569" y="186" width="90" height="28" rx="14" fill="#ef444415" stroke="#ef444440" stroke-width="1"/>
+  <text x="614" y="205" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#ef4444" text-anchor="middle">Maroc AI</text>
+
+  <!-- Bottom subtitle -->
+  <text x="213" y="252" font-family="system-ui, sans-serif" font-size="13" fill="#484f58">Sante · Trading BVC · Immobilier · Any OS · Any Platform</text>
+
+  <!-- Version badge -->
+  <rect x="716" y="186" width="66" height="28" rx="14" fill="#238636" stroke="#2ea04360" stroke-width="1"/>
+  <text x="749" y="205" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#3fb950" text-anchor="middle">v1.0.0</text>
+
+  <!-- Bottom right flag -->
+  <text x="790" y="252" font-family="system-ui, sans-serif" font-size="22" text-anchor="middle">&#x1F1F2;&#x1F1E6;</text>
+
+  <!-- Decorative corner dots -->
+  <circle cx="860" cy="30" r="3" fill="#00c6ff" opacity="0.4"/>
+  <circle cx="875" cy="30" r="3" fill="#a855f7" opacity="0.4"/>
+  <circle cx="860" cy="45" r="3" fill="#a855f7" opacity="0.4"/>
+  <circle cx="875" cy="45" r="3" fill="#00c6ff" opacity="0.4"/>
+</svg>
