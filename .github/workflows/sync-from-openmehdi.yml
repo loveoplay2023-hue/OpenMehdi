@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      workflows: write
     steps:
       - name: Checkout OpenMehdi
         uses: actions/checkout@v4
@@ -17,46 +18,50 @@ jobs:
 
       - name: Clone openclaw source
         run: |
-          git clone --depth=1 https://github.com/openclaw/openclaw.git /tmp/openclaw-src
+          git clone --depth=1 https://github.com/openclaw/openclaw.git /tmp/openclaw
 
-      - name: Copy all missing folders
+      - name: Copy all missing folders (excluding .github)
         run: |
+          cd /tmp/openclaw
           for dir in .agent .agents .pi .vscode Swabble apps assets docs extensions git-hooks packages patches scripts skills src test ui vendor; do
-            if [ -d "/tmp/openclaw-src/$dir" ]; then
-              cp -rn "/tmp/openclaw-src/$dir" $GITHUB_WORKSPACE/ && echo "Copied $dir" || echo "Skipped $dir"
+            if [ -d "$dir" ]; then
+              cp -r "$dir" "$GITHUB_WORKSPACE/"
+              echo "Copied: $dir"
             fi
           done
 
       - name: Remove files with real secrets or API keys
         run: |
-          cd $GITHUB_WORKSPACE
-          # Remove known sensitive extension files
-          rm -rf extensions/google-antigravity-auth/ || true
-          rm -rf extensions/google-auth/ || true
-          # Replace any remaining key-like values with placeholders
-          find . -type f \( -name "*.ts" -o -name "*.js" -o -name "*.json" \) \
-            ! -path "./.git/*" \
-            -exec sed -i \
-              -e 's/[A-Z0-9]\{20,\}\.apps\.googleusercontent\.com/YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com/g' \
-              -e 's/GOCSPX-[A-Za-z0-9_-]\{20,\}/GOCSPX-PLACEHOLDER_SECRET/g' \
-              {} \; 2>/dev/null || true
-          echo "Secrets cleaned"
+          cd "$GITHUB_WORKSPACE"
+          # Remove secrets baseline
+          rm -f .secrets.baseline
+          # Clean .env.example of real values
+          if [ -f .env.example ]; then
+            sed -i 's/=.*/=YOUR_KEY_HERE/g' .env.example || true
+          fi
+          # Remove any OAuth client secrets from config files
+          find . -name '*.json' -not -path './.git/*' -exec sed -i 's/"client_secret"[[:space:]]*:[[:space:]]*"[^"]*"/"client_secret": "REDACTED"/g' {} \; 2>/dev/null || true
+          find . -name '*.ts' -not -path './.git/*' -exec sed -i 's/clientSecret:[[:space:]]*["'\''`][^"'\''`]*["'\''`]/clientSecret: "REDACTED"/g' {} \; 2>/dev/null || true
+          echo "Secret cleaning done"
 
       - name: Rename openclaw to openmehdi in all text files
         run: |
-          cd $GITHUB_WORKSPACE
-          find . -type f \( -name "*.ts" -o -name "*.js" -o -name "*.json" -o -name "*.md" -o -name "*.yml" -o -name "*.yaml" -o -name "*.sh" -o -name "*.mjs" -o -name "*.toml" \) \
-            ! -path "./.git/*" \
-            -exec sed -i \
-              -e 's/OpenClaw/OpenMehdi/g' \
-              -e 's/openclaw/openmehdi/g' \
-              -e 's/OPENCLAW/OPENMEHDI/g' \
-              -e 's/open-claw/open-mehdi/g' \
-              -e 's/clawhub/mehdihub/g' \
-              -e 's/ClawHub/MehdiHub/g' \
-              -e 's/clawdinator/mehdinator/g' \
-              {} \;
-          echo "All renames done"
+          cd "$GITHUB_WORKSPACE"
+          # Rename references in text files (not binary, not .git)
+          find . -type f -not -path './.git/*' -not -name '*.png' -not -name '*.jpg' -not -name '*.gif' -not -name '*.ico' -not -name '*.woff' -not -name '*.woff2' -not -name '*.ttf' -not -name '*.eot' -not -name '*.otf' -not -name '*.mp4' -not -name '*.webm' -not -name '*.zip' -not -name '*.tar' -not -name '*.gz' | while read f; do
+            if file "$f" 2>/dev/null | grep -q 'text'; then
+              sed -i 's/openclaw\.ai/openmehdi.ma/g' "$f" 2>/dev/null || true
+              sed -i 's/openclaw\.mjs/openmehdi.mjs/g' "$f" 2>/dev/null || true
+              sed -i 's/openclaw\.podman/openmehdi.podman/g' "$f" 2>/dev/null || true
+              sed -i 's/openclaw\/openclaw/loveoplay2023-hue\/OpenMehdi/g' "$f" 2>/dev/null || true
+              sed -i 's/package openclaw/package openmehdi/g' "$f" 2>/dev/null || true
+              sed -i 's/"name": "openclaw"/"name": "openmehdi"/g' "$f" 2>/dev/null || true
+            fi
+          done
+          # Rename openclaw.mjs and openclaw.podman.env files
+          [ -f openclaw.mjs ] && mv openclaw.mjs openmehdi.mjs || true
+          [ -f openclaw.podman.env ] && mv openclaw.podman.env openmehdi.podman.env || true
+          echo "Rename done"
 
       - name: Configure git
         run: |
@@ -64,10 +69,11 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Commit and push
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          git add -A
+          git diff --cached --quiet && echo "Nothing to commit" && exit 0
+          git commit -m "chore: sync source folders from openclaw, rename to openmehdi"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/loveoplay2023-hue/OpenMehdi.git HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cd $GITHUB_WORKSPACE
-          git add -A
-          git commit -m "feat: sync all folders from openclaw, renamed to OpenMehdi" || echo "Nothing to commit"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/loveoplay2023-hue/OpenMehdi.git main
