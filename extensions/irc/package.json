@@ -1,0 +1,14 @@
+{
+  "name": "@openmehdi/irc",
+  "version": "2026.2.18",
+  "description": "OpenMehdi IRC channel plugin",
+  "type": "module",
+  "devDependencies": {
+    "openmehdi": "workspace:*"
+  },
+  "openmehdi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "@openmehdi/google-gemini-cli-auth",
+  "version": "2026.2.18",
+  "private": true,
+  "description": "OpenMehdi Gemini CLI OAuth provider plugin",
+  "type": "module",
+  "devDependencies": {
+    "openmehdi": "workspace:*"
+  },
+  "openmehdi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}
