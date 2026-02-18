@@ -4,7 +4,7 @@
 
 # OpenMehdi
 
-**Ton Assistant IA Personnel — Local-First, Multilingue, Multi-Agent**
+**Ton Assistant IA Personnel — Souverain, Local-First, Multilingue**
 
 [![CI](https://img.shields.io/github/actions/workflow/status/loveoplay2023-hue/OpenMehdi/sync-from-openmehdi.yml?branch=main&style=for-the-badge&label=Build&logo=github)](https://github.com/loveoplay2023-hue/OpenMehdi/actions)
 [![Release](https://img.shields.io/github/v/release/loveoplay2023-hue/OpenMehdi?style=for-the-badge&logo=github&color=7b2ff7)](https://github.com/loveoplay2023-hue/OpenMehdi/releases)
@@ -15,84 +15,83 @@
 
 ---
 
-## Vue d'ensemble
+## 🌍 Vue d'ensemble
 
-**OpenMehdi** est un assistant IA personnel souverain, concu pour le contexte marocain.
-Il tourne sur **ta propre machine**, repond sur les messageries que tu utilises deja, et parle **arabe, francais, anglais et darija**.
+**OpenMehdi** est un assistant IA personnel souverain, conçu spécifiquement pour le contexte marocain. Il s'exécute sur **votre propre machine** (local-first), garantissant une confidentialité totale. OpenMehdi communique via vos messageries habituelles et maîtrise parfaitement l'**arabe, le français, l'anglais et la darija**.
 
-Specialise sur trois domaines strategiques :
+### 🎯 Domaines d'expertise stratégiques
 
 | Domaine | Description |
-|--------|-------------|
-| **Sante** | Conseils medicaux, suivi symptomes, integration SanteProIA |
-| **Trading BVC** | Analyse Bourse de Casablanca, signaux techniques, alertes prix |
-| **Immobilier** | Recherche biens, estimation prix, annonces Maroc |
+| :--- | :--- |
+| 🏥 **Santé** | Conseils médicaux, suivi des symptômes, intégration native avec **SantéProIA**. |
+| 📈 **Trading BVC** | Analyse de la Bourse de Casablanca, signaux techniques, alertes de prix en temps réel. |
+| 🏠 **Immobilier** | Recherche de biens, estimations de prix, analyse des annonces au Maroc. |
 
 ---
 
-## Fonctionnalites cles
+## 🚀 Fonctionnalités clés
 
-- **Multilingue** — Arabe (AR), Francais (FR), Anglais (EN), Darija marocaine
-- **Multi-Agent** — Routing intelligent entre agents specialises
-- **Local-First** — 100% sur ton serveur, tes donnees restent chez toi
-- **Multi-Plateforme** — macOS, Linux, Windows (WSL2), iOS, Android
-- **Multi-Canal** — WhatsApp, Telegram, Discord, Slack, Signal, Teams, WebChat
-- **Raisonnement avance** — Modes de reflexion configurable (low / medium / high)
+- 🗣️ **Multilingue natif** — Arabe (AR), Français (FR), Anglais (EN), Darija marocaine.
+- 🤖 **Multi-Agent** — Routage intelligent vers des agents spécialisés selon vos besoins.
+- 🔒 **Local-First** — 100% de contrôle sur vos données, hébergé sur votre propre serveur.
+- 💻 **Multi-Plateforme** — macOS, Linux, Windows (WSL2), iOS, Android.
+- 📱 **Omnicanal** — WhatsApp, Telegram, Discord, Slack, Signal, Teams, WebChat.
+- 🧠 **Raisonnement avancé** — Modes de réflexion configurables (bas / moyen / haut).
 
 ---
 
-## Installation
+## 🛠️ Installation
 
-> **Prerequis :** Node.js >= 22
+> **Prérequis :** Node.js >= 22
 
 ```bash
-# Installation globale
+# Installation globale via NPM
 npm install -g openmehdi@latest
 
-# ou avec pnpm
+# Ou via PNPM
 pnpm add -g openmehdi@latest
 
-# Configuration initiale
+# Initialisation et configuration
 openmehdi onboard --install-daemon
 ```
 
 ---
 
-## Demarrage rapide
+## ⚡ Démarrage rapide
 
 ```bash
-# Demarrer la passerelle
+# Lancer la passerelle de communication
 openmehdi gateway --port 18789 --verbose
 
 # Envoyer un message de test
 openmehdi message send --to +212612345678 --message "Bonjour OpenMehdi"
 
-# Lancer une analyse BVC
+# Analyser une action à la BVC
 openmehdi agent --message "Analyse le titre Maroc Telecom sur la BVC" --thinking high
 
-# Consulter la sante
-openmehdi agent --message "Quels sont les symptomes d'une carence en fer?" --agent sante
+# Demander un conseil santé
+openmehdi agent --message "Quels sont les symptômes d'une carence en fer ?" --agent sante
 ```
 
 ---
 
-## Agents disponibles
+## 🤖 Agents spécialisés disponibles
 
-| Agent | Commande | Specialite |
-|-------|----------|------------|
-| **Agent Sante** | `--agent sante` | Conseils medicaux, SanteProIA, symptomes |
-| **Agent Trading** | `--agent trading` | BVC, analyse technique, alertes prix |
-| **Agent Immobilier** | `--agent immo` | Recherche bien, estimation, annonces Maroc |
-| **Agent Recherche** | `--agent recherche` | Web scraping, veille informationnelle |
-| **Agent Darija** | `--agent darija` | Traduction et comprehension du dialecte |
+| Agent | Commande | Spécialité |
+| :--- | :--- | :--- |
+| 🏥 **Santé** | `--agent sante` | Conseils médicaux, SantéProIA, analyse de symptômes. |
+| 📈 **Trading** | `--agent trading` | BVC, analyse technique, alertes prix. |
+| 🏠 **Immobilier** | `--agent immo` | Recherche, estimations, annonces Maroc. |
+| 🌐 **Recherche** | `--agent recherche` | Web scraping, veille stratégique, résumés. |
+| 💬 **Darija** | `--agent darija` | Traduction et compréhension fine du dialecte marocain. |
 
 ---
 
-## Canaux de messagerie supportes
+## 📱 Canaux supportés
 
 <table>
 <tr>
-<td><b>Mobile</b></td>
+<td width="30%"><b>Mobile</b></td>
 <td>WhatsApp · Telegram · Signal · iMessage (BlueBubbles)</td>
 </tr>
 <tr>
@@ -107,9 +106,9 @@ openmehdi agent --message "Quels sont les symptomes d'une carence en fer?" --age
 
 ---
 
-## Configuration
+## ⚙️ Configuration
 
-Fichier de configuration : `~/.openmehdi/openmehdi.json`
+Le fichier se trouve dans : `~/.openmehdi/openmehdi.json`
 
 ```json
 {
@@ -126,42 +125,39 @@ Fichier de configuration : `~/.openmehdi/openmehdi.json`
 
 ---
 
-## Securite
+## 🛡️ Sécurité
 
-OpenMehdi se connecte a de vraies surfaces de messagerie.
-Traiter les DMs entrants comme des **entrees non fiables** est essentiel.
-Consulter la [documentation securite](https://docs.openclaw.ai/gateway/security) avant tout deploiement en production.
+OpenMehdi interagit avec des interfaces de messagerie réelles. Il est impératif de considérer les messages entrants comme des **entrées non fiabilisées**. Veuillez consulter la [documentation de sécurité](https://docs.openclaw.ai/gateway/security) avant toute mise en production.
 
 ---
 
-## Documentation
+## 📚 Documentation
 
 | Ressource | Lien |
-|-----------|------|
-| Demarrage rapide | [Getting Started](https://docs.openclaw.ai/start/getting-started) |
-| Configuration complete | [Configuration](https://docs.openclaw.ai/gateway/configuration) |
-| Securite & permissions | [Security](https://docs.openclaw.ai/gateway/security) |
-| Deploiement Docker | [Docker](https://docs.openclaw.ai/install/docker) |
+| :--- | :--- |
+| Guide de démarrage | [Getting Started](https://docs.openclaw.ai/start/getting-started) |
+| Configuration avancée | [Configuration](https://docs.openclaw.ai/gateway/configuration) |
+| Sécurité & Droits | [Security](https://docs.openclaw.ai/gateway/security) |
+| Déploiement Docker | [Docker](https://docs.openclaw.ai/install/docker) |
 
 ---
 
-## Contribution
+## 🤝 Contribution
 
-Les contributions sont les bienvenues. Voir [CONTRIBUTING.md](./CONTRIBUTING.md) pour les conventions et les directives.
+Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](./CONTRIBUTING.md) pour nos directives de développement.
 
 ---
 
-## Licence
+## 📄 Licence
 
-Distribue sous licence **MIT** — voir [LICENSE](./LICENSE) pour les details.
+Distribué sous licence **MIT** — voir [LICENSE](./LICENSE) pour plus de détails.
 
-**OpenMehdi** est bati sur les epaules du projet open-source [OpenClaw](https://github.com/openclaw/openclaw).
-Merci a toute la communaute pour leur travail remarquable.
+**OpenMehdi** est fièrement bâti sur le projet open-source [OpenClaw](https://github.com/openclaw/openclaw). Un immense merci à la communauté pour leur travail exceptionnel.
 
 ---
 
 <div align="center">
 
-Fait avec en 2026 · Maroc
+Propulsé par l'IA au Maroc · 2026
 
 </div>
