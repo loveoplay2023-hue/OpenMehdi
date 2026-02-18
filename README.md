@@ -1,128 +1,167 @@
-# 🧠 OpenMehdi — Ton Assistant IA Personnel
+<div align="center">
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text-dark.png">
-    <img src="https://raw.githubusercontent.com/openclaw/openclaw/main/docs/assets/openclaw-logo-text.png" alt="OpenMehdi" width="500">
-  </picture>
-</p>
+<img src="https://raw.githubusercontent.com/loveoplay2023-hue/OpenMehdi/main/docs/assets/openmehdi-banner.svg" alt="OpenMehdi Banner" width="900"/>
 
-<p align="center">
-  <strong>🇲🇦 L'assistant IA personnel pour le Maroc. Local-first. Multilingue. Multi-agent.</strong>
-</p>
+# OpenMehdi
 
-<p align="center">
-  <a href="https://github.com/loveoplay2023-hue/OpenMehdi/actions/workflows/sync-from-openmehdi.yml?branch=main"><img src="https://img.shields.io/github/actions/workflow/status/loveoplay2023-hue/OpenMehdi/sync-from-openmehdi.yml?branch=main&style=for-the-badge" alt="CI status"></a>
-  <a href="https://github.com/loveoplay2023-hue/OpenMehdi/releases"><img src="https://img.shields.io/github/release/loveoplay2023-hue/OpenMehdi?style=for-the-badge" alt="Release"></a>
-  <a href="https://github.com/loveoplay2023-hue/OpenMehdi/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge" alt="MIT License"></a>
-</p>
+**Ton Assistant IA Personnel — Local-First, Multilingue, Multi-Agent**
+
+[![CI](https://img.shields.io/github/actions/workflow/status/loveoplay2023-hue/OpenMehdi/sync-from-openmehdi.yml?branch=main&style=for-the-badge&label=Build&logo=github)](https://github.com/loveoplay2023-hue/OpenMehdi/actions)
+[![Release](https://img.shields.io/github/v/release/loveoplay2023-hue/OpenMehdi?style=for-the-badge&logo=github&color=7b2ff7)](https://github.com/loveoplay2023-hue/OpenMehdi/releases)
+[![License](https://img.shields.io/badge/License-MIT-00c6ff?style=for-the-badge)](LICENSE)
+[![Node](https://img.shields.io/badge/Node-%E2%89%A522-3fb950?style=for-the-badge&logo=node.js)](https://nodejs.org)
+
+</div>
 
 ---
 
-**OpenMehdi** est ton assistant IA personnel que tu fais tourner sur tes propres appareils. Il répond sur les canaux que tu utilises déjà (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat). Il parle **arabe, français, anglais et darija**. Il peut raisonner, analyser et agir sur des domaines clés au Maroc : **Santé, Trading BVC, Immobilier**.
+## Vue d'ensemble
 
-> Basé sur le projet open-source [OpenClaw](https://github.com/openclaw/openclaw), adapté et étendu pour le contexte marocain.
+**OpenMehdi** est un assistant IA personnel souverain, concu pour le contexte marocain.
+Il tourne sur **ta propre machine**, repond sur les messageries que tu utilises deja, et parle **arabe, francais, anglais et darija**.
 
----
+Specialise sur trois domaines strategiques :
 
-## 🌟 Fonctionnalités principales
-
-- 🗣️ **Multilingue** — Arabe (AR), Français (FR), Anglais (EN), Darija (MA)
-- 🤖 **Multi-agent** — Routing intelligent entre agents spécialisés
-- 🏥 **Santé** — Conseils médicaux, SantéProIA, suivi médical
-- 📈 **Trading BVC** — Analyse de la Bourse de Casablanca, signaux, alertes
-- 🏠 **Immobilier Maroc** — Recherche, analyse de prix, annonces
-- 💻 **Local-first** — Fonctionne sur ton propre serveur/machine
-- 📱 **Multi-plateforme** — macOS, Linux, Windows (WSL2), iOS, Android
+| Domaine | Description |
+|--------|-------------|
+| **Sante** | Conseils medicaux, suivi symptomes, integration SanteProIA |
+| **Trading BVC** | Analyse Bourse de Casablanca, signaux techniques, alertes prix |
+| **Immobilier** | Recherche biens, estimation prix, annonces Maroc |
 
 ---
 
-## 🚀 Installation rapide
+## Fonctionnalites cles
 
-**Prérequis : Node ≥ 22**
+- **Multilingue** — Arabe (AR), Francais (FR), Anglais (EN), Darija marocaine
+- **Multi-Agent** — Routing intelligent entre agents specialises
+- **Local-First** — 100% sur ton serveur, tes donnees restent chez toi
+- **Multi-Plateforme** — macOS, Linux, Windows (WSL2), iOS, Android
+- **Multi-Canal** — WhatsApp, Telegram, Discord, Slack, Signal, Teams, WebChat
+- **Raisonnement avance** — Modes de reflexion configurable (low / medium / high)
+
+---
+
+## Installation
+
+> **Prerequis :** Node.js >= 22
 
 ```bash
+# Installation globale
 npm install -g openmehdi@latest
-# ou
+
+# ou avec pnpm
 pnpm add -g openmehdi@latest
+
+# Configuration initiale
 openmehdi onboard --install-daemon
 ```
 
 ---
 
-## ⚡ Démarrage rapide
+## Demarrage rapide
 
 ```bash
-openmehdi onboard --install-daemon
+# Demarrer la passerelle
 openmehdi gateway --port 18789 --verbose
 
-# Envoyer un message
+# Envoyer un message de test
 openmehdi message send --to +212612345678 --message "Bonjour OpenMehdi"
 
-# Lancer l'agent
+# Lancer une analyse BVC
 openmehdi agent --message "Analyse le titre Maroc Telecom sur la BVC" --thinking high
+
+# Consulter la sante
+openmehdi agent --message "Quels sont les symptomes d'une carence en fer?" --agent sante
 ```
 
 ---
 
-## 🤖 Agents spécialisés
+## Agents disponibles
 
-| Agent | Description |
-|-------|-------------|
-| 🏥 **Agent Santé** | Conseils médicaux, SantéProIA, symptômes |
-| 📈 **Agent Trading** | BVC, analyse technique, alertes prix |
-| 🏠 **Agent Immobilier** | Recherche bien, estimation prix, annonces Maroc |
-| 🌐 **Agent Recherche** | Web scraping, veille, résumés |
-| 💬 **Agent Darija** | Traduction, compréhension dialecte marocain |
-
----
-
-## 📱 Canaux supportés
-
-- WhatsApp, Telegram, Signal, iMessage (BlueBubbles)
-- Discord, Slack, Microsoft Teams
-- Google Chat, Matrix, WebChat
-- Zalo, Zalo Personal
+| Agent | Commande | Specialite |
+|-------|----------|------------|
+| **Agent Sante** | `--agent sante` | Conseils medicaux, SanteProIA, symptomes |
+| **Agent Trading** | `--agent trading` | BVC, analyse technique, alertes prix |
+| **Agent Immobilier** | `--agent immo` | Recherche bien, estimation, annonces Maroc |
+| **Agent Recherche** | `--agent recherche` | Web scraping, veille informationnelle |
+| **Agent Darija** | `--agent darija` | Traduction et comprehension du dialecte |
 
 ---
 
-## 🔧 Configuration minimale
+## Canaux de messagerie supportes
 
-`~/.openmehdi/openmehdi.json` :
+<table>
+<tr>
+<td><b>Mobile</b></td>
+<td>WhatsApp · Telegram · Signal · iMessage (BlueBubbles)</td>
+</tr>
+<tr>
+<td><b>Professionnel</b></td>
+<td>Discord · Slack · Microsoft Teams · Google Chat</td>
+</tr>
+<tr>
+<td><b>Autres</b></td>
+<td>Matrix · WebChat · Zalo</td>
+</tr>
+</table>
+
+---
+
+## Configuration
+
+Fichier de configuration : `~/.openmehdi/openmehdi.json`
 
 ```json
 {
   "agent": {
-    "model": "anthropic/claude-opus-4-6"
-  }
+    "model": "anthropic/claude-opus-4-6",
+    "thinking": "high"
+  },
+  "gateway": {
+    "port": 18789
+  },
+  "locale": "fr-MA"
 }
 ```
 
 ---
 
-## 🛡️ Sécurité
+## Securite
 
-OpenMehdi se connecte à de vraies surfaces de messagerie. Traite les DMs entrants comme des **entrées non fiables**.
-
----
-
-## 📚 Documentation
-
-- [Démarrage](https://docs.openclaw.ai/start/getting-started)
-- [Configuration complète](https://docs.openclaw.ai/gateway/configuration)
-- [Sécurité](https://docs.openclaw.ai/gateway/security)
-- [Docker](https://docs.openclaw.ai/install/docker)
+OpenMehdi se connecte a de vraies surfaces de messagerie.
+Traiter les DMs entrants comme des **entrees non fiables** est essentiel.
+Consulter la [documentation securite](https://docs.openclaw.ai/gateway/security) avant tout deploiement en production.
 
 ---
 
-## 🤝 Contribution
+## Documentation
 
-Voir [CONTRIBUTING.md](./CONTRIBUTING.md) pour les directives.
-
-**OpenMehdi** est construit sur [OpenClaw](https://github.com/openclaw/openclaw) — merci à toute la communauté OpenClaw.
+| Ressource | Lien |
+|-----------|------|
+| Demarrage rapide | [Getting Started](https://docs.openclaw.ai/start/getting-started) |
+| Configuration complete | [Configuration](https://docs.openclaw.ai/gateway/configuration) |
+| Securite & permissions | [Security](https://docs.openclaw.ai/gateway/security) |
+| Deploiement Docker | [Docker](https://docs.openclaw.ai/install/docker) |
 
 ---
 
-## 📄 Licence
+## Contribution
 
-MIT — voir [LICENSE](./LICENSE)
+Les contributions sont les bienvenues. Voir [CONTRIBUTING.md](./CONTRIBUTING.md) pour les conventions et les directives.
+
+---
+
+## Licence
+
+Distribue sous licence **MIT** — voir [LICENSE](./LICENSE) pour les details.
+
+**OpenMehdi** est bati sur les epaules du projet open-source [OpenClaw](https://github.com/openclaw/openclaw).
+Merci a toute la communaute pour leur travail remarquable.
+
+---
+
+<div align="center">
+
+Fait avec en 2026 · Maroc
+
+</div>
