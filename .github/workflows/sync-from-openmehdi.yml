@@ -1,0 +1,56 @@
+name: Build OpenMehdi from openclaw source
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout OpenMehdi
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Clone openclaw source
+        run: |
+          git clone --depth=1 https://github.com/openclaw/openclaw.git /tmp/openclaw-src
+
+      - name: Copy all missing folders
+        run: |
+          for dir in .agent .agents .pi .vscode Swabble apps assets docs extensions git-hooks packages patches scripts skills src test ui vendor; do
+            if [ -d "/tmp/openclaw-src/$dir" ]; then
+              cp -rn "/tmp/openclaw-src/$dir" $GITHUB_WORKSPACE/ && echo "Copied $dir" || echo "Skipped $dir"
+            fi
+          done
+
+      - name: Rename openclaw to openmehdi in all text files
+        run: |
+          cd $GITHUB_WORKSPACE
+          find . -type f \( -name "*.ts" -o -name "*.js" -o -name "*.json" -o -name "*.md" -o -name "*.yml" -o -name "*.yaml" -o -name "*.sh" -o -name "*.mjs" -o -name "*.toml" \) \
+            ! -path "./.git/*" \
+            -exec sed -i \
+              -e 's/OpenClaw/OpenMehdi/g' \
+              -e 's/openclaw/openmehdi/g' \
+              -e 's/OPENCLAW/OPENMEHDI/g' \
+              -e 's/open-claw/open-mehdi/g' \
+              -e 's/clawhub/mehdihub/g' \
+              -e 's/ClawHub/MehdiHub/g' \
+              -e 's/clawdinator/mehdinator/g' \
+              {} \;
+          echo "All renames done"
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit and push
+        run: |
+          cd $GITHUB_WORKSPACE
+          git add -A
+          git commit -m "feat: sync all folders from openclaw, renamed to OpenMehdi" || echo "Nothing to commit"
+          git push origin main
