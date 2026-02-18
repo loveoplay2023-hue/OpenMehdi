@@ -1,4 +1,4 @@
-name: Build OpenMehdi from openclaw source
+name: Build OpenMehdi
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     steps:
       - name: Checkout OpenMehdi
         uses: actions/checkout@v4
@@ -22,7 +22,15 @@ jobs:
         run: |
           git clone --depth=1 https://github.com/openclaw/openclaw.git /tmp/openclaw
 
-      - name: Copy all missing folders (excluding .github)
+      - name: Remove secret-containing files from source
+        run: |
+          rm -rf /tmp/openclaw/extensions/google-antigravity-auth
+          rm -rf /tmp/openclaw/.secrets.baseline
+          find /tmp/openclaw -name '*.env' -delete || true
+          find /tmp/openclaw -name '.env*' -delete || true
+          echo "Secret files removed from source"
+
+      - name: Copy all folders (excluding .github)
         run: |
           cd /tmp/openclaw
           for dir in .agent .agents .pi .vscode Swabble apps assets docs extensions git-hooks packages patches scripts skills src test ui vendor; do
@@ -31,23 +39,27 @@ jobs:
               echo "Copied: $dir"
             fi
           done
+          for f in *.mjs *.json *.md *.yaml *.yml *.toml *.lock *.ts *.js; do
+            [ -f "$f" ] && cp "$f" "$GITHUB_WORKSPACE/" && echo "Copied file: $f" || true
+          done
 
-      - name: Remove files with real secrets or API keys
-        run: |
-          cd "$GITHUB_WORKSPACE"
-          rm -f .secrets.baseline
-          if [ -f .env.example ]; then
-            sed -i 's/=.*/=YOUR_KEY_HERE/g' .env.example || true
-          fi
-          echo "Secret cleaning done"
-
-      - name: Rename openclaw to openmehdi in key files
+      - name: Rename all openclaw references to openmehdi
         run: |
           cd "$GITHUB_WORKSPACE"
           [ -f openclaw.mjs ] && mv openclaw.mjs openmehdi.mjs || true
           [ -f openclaw.podman.env ] && mv openclaw.podman.env openmehdi.podman.env || true
-          find . -name 'package.json' -not -path './.git/*' -maxdepth 3 -exec sed -i 's/"name": "openclaw"/"name": "openmehdi"/g' {} \; 2>/dev/null || true
+          find . -not -path './.git/*' -not -path './.github/*' -type f \( -name '*.json' -o -name '*.ts' -o -name '*.js' -o -name '*.mjs' -o -name '*.md' -o -name '*.yaml' -o -name '*.yml' \) \
+            -exec sed -i 's/openclaw/openmehdi/g; s/OpenClaw/OpenMehdi/g; s/OPENCLAW/OPENMEHDI/g' {} \; 2>/dev/null || true
           echo "Rename done"
+
+      - name: Scrub remaining secrets in all files
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          find . -not -path './.git/*' -not -path './.github/*' -type f -name '*.ts' \
+            -exec sed -i 's/GOCSPX-[A-Za-z0-9_-]*/GOCSPX-REMOVED/g' {} \; 2>/dev/null || true
+          find . -not -path './.git/*' -not -path './.github/*' -type f -name '*.ts' \
+            -exec sed -i 's/[0-9]\{12\}-[a-z0-9]\{32\}\.apps\.googleusercontent\.com/GOOGLE_CLIENT_ID_REMOVED/g' {} \; 2>/dev/null || true
+          echo "Secret scrubbing done"
 
       - name: Configure git
         run: |
@@ -60,7 +72,7 @@ jobs:
           git add -A
           git diff --cached --stat
           git diff --cached --quiet && echo "Nothing to commit" && exit 0
-          git commit -m "chore: sync source folders from openclaw, rename to openmehdi"
+          git commit -m "feat: integrate openclaw source into OpenMehdi, rename all references"
           git push origin HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
