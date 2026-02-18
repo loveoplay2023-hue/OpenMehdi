@@ -27,6 +27,21 @@ jobs:
             fi
           done
 
+      - name: Remove files with real secrets or API keys
+        run: |
+          cd $GITHUB_WORKSPACE
+          # Remove known sensitive extension files
+          rm -rf extensions/google-antigravity-auth/ || true
+          rm -rf extensions/google-auth/ || true
+          # Replace any remaining key-like values with placeholders
+          find . -type f \( -name "*.ts" -o -name "*.js" -o -name "*.json" \) \
+            ! -path "./.git/*" \
+            -exec sed -i \
+              -e 's/[A-Z0-9]\{20,\}\.apps\.googleusercontent\.com/YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com/g' \
+              -e 's/GOCSPX-[A-Za-z0-9_-]\{20,\}/GOCSPX-PLACEHOLDER_SECRET/g' \
+              {} \; 2>/dev/null || true
+          echo "Secrets cleaned"
+
       - name: Rename openclaw to openmehdi in all text files
         run: |
           cd $GITHUB_WORKSPACE
@@ -49,8 +64,10 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Commit and push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd $GITHUB_WORKSPACE
           git add -A
           git commit -m "feat: sync all folders from openclaw, renamed to OpenMehdi" || echo "Nothing to commit"
-          git push origin main
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/loveoplay2023-hue/OpenMehdi.git main
