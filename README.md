@@ -52,11 +52,13 @@ pnpm run build && pnpm start
 
 ### 🐍 Star History
 
-<p align="center">
-  <a href="https://star-history.com/#loveoplay2023-hue/OpenMehdi&Timeline">
-    <img src="https://api.star-history.com/svg?repos=loveoplay2023-hue/OpenMehdi&type=Timeline" alt="Star History Chart" width="100%" />
-  </a>
-</p>
+<a href="https://star-history.com/#loveoplay2023-hue/OpenMehdi&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=loveoplay2023-hue/OpenMehdi&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=loveoplay2023-hue/OpenMehdi&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=loveoplay2023-hue/OpenMehdi&type=Date" />
+  </picture>
+</a>
 
 ---
 
@@ -66,6 +68,4 @@ Rejoignez l'aventure ! Consultez notre [CONTRIBUTING.md](./CONTRIBUTING.md) pour
 
 ---
 
-<p align="center">
-  Fait avec ❤️ au Maroc 🇲🇦 pour le monde.
-</p>
+Fait avec ❤️ au Maroc 🇲🇦 pour le monde.
