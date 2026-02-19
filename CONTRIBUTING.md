@@ -1,155 +1,141 @@
-<div align="center">
+# Contributing to OpenMehdi
 
-# ◆ Contribuer à OpenMehdi ◆
+Welcome to the lobster tank! 🦞
 
-*Bienvenue dans la communauté OpenMehdi — La plateforme IA pour le Maroc*
+## Quick Links
 
-</div>
+- **GitHub:** https://github.com/openmehdi/openmehdi
+- **Vision:** [`VISION.md`](VISION.md)
+- **Discord:** https://discord.gg/qkhbAGHRBT
+- **X/Twitter:** [@steipete](https://x.com/steipete) / [@openmehdi](https://x.com/openmehdi)
 
----
+## Maintainers
 
-## ◈ Liens Essentiels
+- **Peter Steinberger** - Benevolent Dictator
+  - GitHub: [@steipete](https://github.com/steipete) · X: [@steipete](https://x.com/steipete)
 
-- **GitHub :** https://github.com/loveoplay2023-hue/OpenMehdi
-- **Issues :** https://github.com/loveoplay2023-hue/OpenMehdi/issues
-- **Pull Requests :** https://github.com/loveoplay2023-hue/OpenMehdi/pulls
-- **Agents Doc :** [AGENTS-OPENMEHDI.md](./AGENTS-OPENMEHDI.md)
-- **Sécurité :** [SECURITY.md](./SECURITY.md)
+- **Shadow** - Discord subsystem, Discord admin, Clawhub, all community moderation
+  - GitHub: [@thewilloftheshadow](https://github.com/thewilloftheshadow) · X: [@4shad0wed](https://x.com/4shad0wed)
 
----
+- **Vignesh** - Memory (QMD), formal modeling, TUI, IRC, and Lobster
+  - GitHub: [@vignesh07](https://github.com/vignesh07) · X: [@\_vgnsh](https://x.com/_vgnsh)
 
-## ◈ Comment Contribuer
+- **Jos** - Telegram, API, Nix mode
+  - GitHub: [@joshp123](https://github.com/joshp123) · X: [@jjpcodes](https://x.com/jjpcodes)
 
-### 1. Fork & Clone
+- **Ayaan Zaidi** - Telegram subsystem, iOS app
+  - GitHub: [@obviyus](https://github.com/obviyus) · X: [@0bviyus](https://x.com/0bviyus)
 
-```bash
-git clone https://github.com/loveoplay2023-hue/OpenMehdi.git
-cd OpenMehdi
-pnpm install
+- **Tyler Yust** - Agents/subagents, cron, BlueBubbles, macOS app
+  - GitHub: [@tyler6204](https://github.com/tyler6204) · X: [@tyleryust](https://x.com/tyleryust)
+
+- **Mariano Belinky** - iOS app, Security
+  - GitHub: [@mbelinky](https://github.com/mbelinky) · X: [@belimad](https://x.com/belimad)
+
+- **Seb Slight** - Docs, Agent Reliability, Runtime Hardening
+  - GitHub: [@sebslight](https://github.com/sebslight) · X: [@sebslig](https://x.com/sebslig)
+
+- **Christoph Nakazawa** - JS Infra
+  - GitHub: [@cpojer](https://github.com/cpojer) · X: [@cnakazawa](https://x.com/cnakazawa)
+
+- **Gustavo Madeira Santana** - Multi-agents, CLI, web UI
+  - GitHub: [@gumadeiras](https://github.com/gumadeiras) · X: [@gumadeiras](https://x.com/gumadeiras)
+
+## How to Contribute
+
+1. **Bugs & small fixes** → Open a PR!
+2. **New features / architecture** → Start a [GitHub Discussion](https://github.com/openmehdi/openmehdi/discussions) or ask in Discord first
+3. **Questions** → Discord #setup-help
+
+## Before You PR
+
+- Test locally with your OpenMehdi instance
+- Run tests: `pnpm build && pnpm check && pnpm test`
+- Ensure CI checks pass
+- Keep PRs focused (one thing per PR; do not mix unrelated concerns)
+- Describe what & why
+
+## Control UI Decorators
+
+The Control UI uses Lit with **legacy** decorators (current Rollup parsing does not support
+`accessor` fields required for standard decorators). When adding reactive fields, keep the
+legacy style:
+
+```ts
+@state() foo = "bar";
+@property({ type: Number }) count = 0;
 ```
 
-### 2. Créer une branche
+The root `tsconfig.json` is configured for legacy decorators (`experimentalDecorators: true`)
+with `useDefineForClassFields: false`. Avoid flipping these unless you are also updating the UI
+build tooling to support standard decorators.
 
-```bash
-git checkout -b feat/mon-agent-expert
-# ou
-git checkout -b fix/correction-trading-bvc
-```
+## AI/Vibe-Coded PRs Welcome! 🤖
 
-### 3. Développer & Tester
+Built with Codex, Claude, or other AI tools? **Awesome - just mark it!**
 
-```bash
-pnpm build
-pnpm test
-pnpm gateway:watch  # Mode dev
-```
+Please include in your PR:
 
-### 4. Soumettre une PR
+- [ ] Mark as AI-assisted in the PR title or description
+- [ ] Note the degree of testing (untested / lightly tested / fully tested)
+- [ ] Include prompts or session logs if possible (super helpful!)
+- [ ] Confirm you understand what the code does
 
-```bash
-git add .
-git commit -m "feat: ajouter agent expert immobilier Agadir"
-git push origin feat/mon-agent-expert
-```
+AI PRs are first-class citizens here. We just want transparency so reviewers know what to look for.
 
-Ouvrir une Pull Request sur GitHub avec une description claire.
+## Current Focus & Roadmap 🗺
 
----
+We are currently prioritizing:
 
-## ◈ Convention de Commits
+- **Stability**: Fixing edge cases in channel connections (WhatsApp/Telegram).
+- **UX**: Improving the onboarding wizard and error messages.
+- **Skills**: For skill contributions, head to [ClawHub](https://clawhub.ai/) — the community hub for OpenMehdi skills.
+- **Performance**: Optimizing token usage and compaction logic.
 
-| Préfixe | Usage |
-|:--------|:------|
-| `feat:` | Nouvelle fonctionnalité ou agent |
-| `fix:` | Correction de bug |
-| `docs:` | Documentation |
-| `ci:` | GitHub Actions / workflows |
-| `chore:` | Maintenance, dépendances |
-| `refactor:` | Refactoring sans changement fonctionnel |
-| `test:` | Ajout ou modification de tests |
+Check the [GitHub Issues](https://github.com/openmehdi/openmehdi/issues) for "good first issue" labels!
 
----
+## Maintainers
 
-## ◈ Standards du Projet
+We're selectively expanding the maintainer team.
+If you're an experienced contributor who wants to help shape OpenMehdi's direction — whether through code, docs, or community — we'd like to hear from you.
 
-### Nommage
-- Utiliser `openmehdi` (minuscule) dans le code
-- Utiliser `OpenMehdi` (PascalCase) dans la documentation
-- **Ne jamais** utiliser `openclaw`, `OpenClaw` dans ce repo
+Being a maintainer is a responsibility, not an honorary title. We expect active, consistent involvement — triaging issues, reviewing PRs, and helping move the project forward.
 
-### Langues Acceptées
-- Français ▫ Arabe ▫ Anglais ▫ Darija
-- Les PRs en Darija sont les bienvenues !
+Still interested? Email contributing@openmehdi.ai with:
 
-### Code Quality
-- TypeScript strict (`tsconfig.json`)
-- Tests obligatoires pour nouveaux agents
-- Lint via `oxlint` (`pnpm lint`)
-- Format via `oxfmt` (`pnpm format`)
+- Links to your PRs on OpenMehdi (if you don't have any, start there first)
+- Links to open source projects you maintain or actively contribute to
+- Your GitHub, Discord, and X/Twitter handles
+- A brief intro: background, experience, and areas of interest
+- Languages you speak and where you're based
+- How much time you can realistically commit
 
----
+We welcome people across all skill sets — engineering, documentation, community management, and more.
+We review every human-only-written application carefully and add maintainers slowly and deliberately.
+Please allow a few weeks for a response.
 
-## ◈ Priorités de Contribution
+## Report a Vulnerability
 
-### Agents (Haute Priorité)
-- Amélioration agents existants (SantePro, TradingPro, ImmoMehdi...)
-- Nouveaux skills pour le marché marocain
-- Données BVC en temps réel
-- Intégration API Avito / Mubawab
+We take security reports seriously. Report vulnerabilities directly to the repository where the issue lives:
 
-### Documentation (Moyenne Priorité)
-- Traduction guides en Darija
-- Tutoriels vidéo en français
-- Exemples de configuration Maroc
+- **Core CLI and gateway** — [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi)
+- **macOS desktop app** — [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/macos)
+- **iOS app** — [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/ios)
+- **Android app** — [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/android)
+- **ClawHub** — [openmehdi/clawhub](https://github.com/openmehdi/clawhub)
+- **Trust and threat model** — [openmehdi/trust](https://github.com/openmehdi/trust)
 
-### Infrastructure (Toujours Utile)
-- Docker improvements
-- Performance optimizations
-- Tests d'intégration
+For issues that don't fit a specific repo, or if you're unsure, email **security@openmehdi.ai** and we'll route it.
 
----
+### Required in Reports
 
-## ◈ Code de Conduite
+1. **Title**
+2. **Severity Assessment**
+3. **Impact**
+4. **Affected Component**
+5. **Technical Reproduction**
+6. **Demonstrated Impact**
+7. **Environment**
+8. **Remediation Advice**
 
-Ce projet adopte un code de conduite respectueux et inclusif :
-
-- Respect mutuel entre contributeurs
-- Aucune discrimination (langue, religion, origine)
-- Retours constructifs et bienveillants
-- La Darija, l'arabe et le français sont également acceptés
-
----
-
-## ◈ Rapporter un Bug
-
-1. Vérifier que le bug n'est pas déjà rapporté dans les [Issues](https://github.com/loveoplay2023-hue/OpenMehdi/issues)
-2. Ouvrir une nouvelle Issue avec :
-   - **Titre clair** du problème
-   - **Étapes de reproduction**
-   - **Comportement attendu** vs **obtenu**
-   - **Logs** (`openmehdi gateway --verbose`)
-   - **OS & version Node.js**
-
----
-
-## ◈ Proposer une Fonctionnalité
-
-Ouvrir une Issue avec le label `enhancement` en décrivant :
-- Le **besoin métier** (contexte marocain)
-- La **solution proposée**
-- Les **agents concernés**
-- L'**impact utilisateur** attendu
-
----
-
-<div align="center">
-
----
-
-*Chaque contribution, grande ou petite, construit l'IA du Maroc.*
-
-**◆ OPENMEHDI ◆** &nbsp;·&nbsp; *Fait au Maroc 🇲🇦 Pour le Monde*
-
----
-
-</div>
+Reports without reproduction steps, demonstrated impact, and remediation advice will be deprioritized. Given the volume of AI-generated scanner findings, we must ensure we're receiving vetted reports from researchers who understand the issues.
