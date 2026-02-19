@@ -1,6 +1,6 @@
 ---
 name: darija-skill
-emoji: 🦂
+emoji: 🐍
 description: Compétence spécialisée pour le traitement du Darija marocain et du contexte arabe. Optimisé pour OpenMehdi.
 primaryEnv: DARIJA_MODEL
 homepage: https://github.com/loveoplay2023-hue/OpenMehdi
@@ -15,7 +15,7 @@ requires:
     - darija_model
 ---
 
-# 🦂 Darija & Arabic Language Skill — OpenMehdi
+# 🐍 Darija & Arabic Language Skill — OpenMehdi
 
 Ce skill active la compréhension et la génération en **Darija marocain**, **Arabe standard** et **Français**.
 
