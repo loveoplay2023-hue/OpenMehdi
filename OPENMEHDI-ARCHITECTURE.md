@@ -1,29 +1,29 @@
-# 🐍 ZeroClaw Integration Guide — OpenMehdi
+# 🐍 OpenMehdi — Guide d'Architecture
 
-> Ce document décrit comment les patterns architecturaux de **ZeroClaw** ont été intégrés dans **OpenMehdi** pour créer un agent IA souverain de classe enterprise.
-
----
-
-## 🏗️ Architecture Comparée
-
-| Concept ZeroClaw | Implémentation OpenMehdi | Fichier |
-|------------------|--------------------------|---------|
-| Trait Pattern | `OpenMehdiSkillMetadata` | `src/agents/skills/types.ts` |
-| Skill Registry | `SkillEntry` + `SkillSnapshot` | `src/agents/skills/types.ts` |
-| Sandbox Docker | Docker Compose isolé | `docker-compose.yml` |
-| ClawDB State | Workspace immutable state | `src/agents/skills/workspace.ts` |
-| Tool Allowlist | `SkillCommandSpec` dispatch | `src/agents/skills/types.ts` |
-| Agent Workflow | `.agent/workflows/*.md` | `.agent/workflows/update_openmehdi.md` |
-| Darija Support | `DarijaSkillTrait` | `.agents/skills/darija-skill.md` |
+> Ce document décrit l'architecture technique d'**OpenMehdi** : un agent IA personnel souverain, modulaire et local-first, conçu par et pour la communauté.
 
 ---
 
-## 🧩 Trait Pattern (ZeroClaw → OpenMehdi)
+## 🏗️ Vue d'Ensemble de l'Architecture
 
-### Principe ZeroClaw
-ZeroClaw définit des **Traits** — des interfaces TypeScript composables qui définissent le comportement d'un agent sans couplage fort.
+| Composant | Description | Fichier |
+|-----------|-------------|---------|
+| Skill Metadata | `OpenMehdiSkillMetadata` — définit les capacités d'un skill | `src/agents/skills/types.ts` |
+| Skill Registry | `SkillEntry` + `SkillSnapshot` — registre des skills actifs | `src/agents/skills/types.ts` |
+| Sandbox Docker | Exécution isolée des agents | `docker-compose.yml` |
+| Workspace State | Gestion d'état immuable du workspace | `src/agents/skills/workspace.ts` |
+| Tool Allowlist | `SkillCommandSpec` — outils autorisés par skill | `src/agents/skills/types.ts` |
+| Agent Workflow | Workflows markdown pour les tâches récurrentes | `.agent/workflows/update_openmehdi.md` |
+| Darija Support | Skill pour l'arabe marocain | `.agents/skills/darija-skill.md` |
 
-### Implémentation OpenMehdi
+---
+
+## 🧩 Skill Pattern — OpenMehdi
+
+### Principe
+OpenMehdi définit des **Skills** — des modules TypeScript composables qui encapsulent une capacité spécifique de l'agent sans couplage fort.
+
+### Type Principal
 
 ```typescript
 // src/agents/skills/types.ts
@@ -47,28 +47,28 @@ export type OpenMehdiSkillMetadata = {
 
 ---
 
-## 🔒 Security Checklist (ZeroClaw → OpenMehdi)
+## 🔒 Politique de Sécurité OpenMehdi
 
-OpenMehdi implémente la **ZeroClaw Security Checklist** :
+OpenMehdi est conçu **Local-First** avec des garanties de sécurité strictes :
 
 ```yaml
 # .openmehdi/security.yaml
 sandbox:
-  docker: true           # Exécution dans Docker isolé
-  network_restricted: true
-  readonly_fs: true
+  docker: true               # Exécution dans Docker isolé
+  network_restricted: true   # Réseau restreint par défaut
+  readonly_fs: true          # Filesystem en lecture seule
 
 secrets:
-  expose_local: false    # Jamais de secrets locaux exposés
-  vault_required: false  # Optionnel: HashiCorp Vault
+  expose_local: false        # Jamais de secrets locaux exposés
+  vault_optional: true       # HashiCorp Vault optionnel
 
 allowlists:
-  tools:                 # Outils explicitement autorisés
+  tools:                     # Outils explicitement autorisés
     - bash
     - python
     - node
     - git
-  domains:              # Domaines réseau autorisés
+  domains:                   # Domaines réseau autorisés
     - api.openai.com
     - ollama.local
     - bourse.ma
@@ -76,9 +76,7 @@ allowlists:
 
 ---
 
-## 🔄 Workflow Pattern (ZeroClaw → OpenMehdi)
-
-### Structure d'un workflow OpenMehdi
+## 🔄 Structure d'un Workflow OpenMehdi
 
 ```markdown
 ---
@@ -100,7 +98,7 @@ description: Description courte du workflow
 
 | Workflow | Description | Fichier |
 |----------|-------------|---------|
-| Upstream Sync | Synchroniser avec l'upstream | `.agent/workflows/update_openmehdi.md` |
+| Upstream Sync | Synchroniser le fork avec l'upstream | `.agent/workflows/update_openmehdi.md` |
 | Merge PR | Fusionner des Pull Requests | `.agents/skills/merge-pr/` |
 | Review PR | Réviser du code | `.agents/skills/review-pr/` |
 | Prepare PR | Préparer une PR | `.agents/skills/prepare-pr/` |
@@ -108,13 +106,13 @@ description: Description courte du workflow
 
 ---
 
-## 📦 Skill Registration Pattern
+## 📦 Enregistrer un Nouveau Skill
 
 ```typescript
-// Enregistrer un nouveau skill OpenMehdi
+// Exemple : enregistrer le skill Trading BVC
 import type { SkillEntry } from "./types";
 
-const mySkill: SkillEntry = {
+const tradingSkill: SkillEntry = {
   skill: {
     name: "trading-bvc",
     description: "Analyse des actions BVC (Bourse de Casablanca)",
@@ -146,12 +144,12 @@ const mySkill: SkillEntry = {
 
 ---
 
-## 🌐 Multi-Language Support
+## 🌐 Support Multilingue
 
-OpenMehdi étend ZeroClaw avec un support natif multilingue :
+OpenMehdi supporte nativement plusieurs langues :
 
 ```typescript
-// src/agents/skills/types.ts - Extension OpenMehdi
+// Extension de types pour le multilingue
 export type LocaleConfig = {
   primary: "dar" | "ar" | "fr" | "en";
   fallback: "fr" | "en";
@@ -163,38 +161,35 @@ export type OpenMehdiAgentConfig = {
   locale: LocaleConfig;
   skills: SkillEntry[];
   sandbox: SandboxConfig;
-  zeroclaw: {
-    version: string;
-    clawdbPath: string;
-    securityLevel: "strict" | "moderate" | "permissive";
-  };
+  version: string;
+  securityLevel: "strict" | "moderate" | "permissive";
 };
 ```
 
 ---
 
-## 🚀 Roadmap d'Intégration
+## 🚀 Roadmap Technique
 
-- [x] **Phase 1** : Intégration openclaw source → OpenMehdi (renommage)
-- [x] **Phase 2** : Documentation ZeroClaw dans README/AGENTS/CONTRIBUTING
-- [x] **Phase 3** : Skill Darija avec ZeroClaw Trait Pattern
+- [x] **Phase 1** : Architecture modulaire Skills + Workflows
+- [x] **Phase 2** : Documentation complète (README, AGENTS, CONTRIBUTING)
+- [x] **Phase 3** : Skill Darija avec support natif marocain
 - [ ] **Phase 4** : TypeScript Darija Skill complet (`src/agents/skills/darija.ts`)
-- [ ] **Phase 5** : Agent Trading BVC avec données BVC en temps réel
-- [ ] **Phase 6** : Agent SantéProIA avec base de connaissances médicale marocaine
-- [ ] **Phase 7** : Dashboard OpenMehdi avec métriques ZeroClaw
+- [ ] **Phase 5** : Agent Trading BVC avec données temps réel
+- [ ] **Phase 6** : Agent SantéProIA (base médicale marocaine)
+- [ ] **Phase 7** : Dashboard OpenMehdi avec métriques d'agents
 
 ---
 
 ## 📖 Références
 
-- [ZeroClaw Repository](https://github.com/zeroclaw-labs/zeroclaw)
-- [OpenMehdi Repository](https://github.com/loveoplay2023-hue/OpenMehdi)
+- [Dépôt OpenMehdi](https://github.com/loveoplay2023-hue/OpenMehdi)
 - [AGENTS-OPENMEHDI.md](./AGENTS-OPENMEHDI.md)
 - [CONTRIBUTING.md](./CONTRIBUTING.md)
-- [.agent/workflows/update_openmehdi.md](./.agent/workflows/update_openmehdi.md)
+- [SECURITY.md](./SECURITY.md)
+- [Workflow Upstream Sync](./.agent/workflows/update_openmehdi.md)
 
 ---
 
 <p align="center">
-  Fait avec ❤️ au Maroc 🇲🇦 — Powered by ZeroClaw Architecture
+  Fait avec ❤️ au Maroc 🇲🇦 — OpenMehdi, l'IA souveraine.
 </p>
