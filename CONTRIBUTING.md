@@ -25,11 +25,7 @@ OpenMehdi is maintained by a passionate group of engineers, designers, and commu
 | Maintainer | Area of Ownership |
 |---|---|
 | **[Peter Steinberger](https://github.com/steipete)** — [@steipete](https://x.com/steipete) | Project Lead & Architecture |
-| **[Shadow](https://github.com/thewilloftheshadow)** — [@4shad0wed](https://x.com/4shad0wed) | Discord, Community & Clawhub |
-| **[Vignesh](https://github.com/vignesh07)** — [@_vgnsh](https://x.com/_vgnsh) | Memory (QMD), TUI, IRC & Lobster |
-| **[Jos](https://github.com/joshp123)** — [@jjpcodes](https://x.com/jjpcodes) | Telegram, API & Nix Mode |
-| **[Ayaan Zaidi](https://github.com/obviyus)** — [@0bviyus](https://x.com/0bviyus) | Telegram Subsystem & iOS App |
-| **[Tyler Yust](https://github.com/tyler6204)** — [@tyleryust](https://x.com/tyleryust) | Agents/Subagents, Cron & macOS App |
+| **[Shadow](https://github.com/thewilloftheshadow)** — [@4shad0wed](https://x.com/4shad0wed) | Discord, Community &  App |
 | **[Mariano Belinky](https://github.com/mbelinky)** — [@belimad](https://x.com/belimad) | iOS App & Security |
 | **[Seb Slight](https://github.com/sebslight)** — [@sebslig](https://x.com/sebslig) | Docs, Agent Reliability & Runtime |
 | **[Christoph Nakazawa](https://github.com/cpojer)** — [@cnakazawa](https://x.com/cnakazawa) | JavaScript Infrastructure |
@@ -51,7 +47,7 @@ Big ideas deserve a conversation first. Start a [GitHub Discussion](https://gith
 Stuck on setup or configuration? Head to **#setup-help** on Discord — our community responds quickly.
 
 ### 4. Skills & Integrations
-Want to add a new skill or integration? Head to [ClawHub](https://clawhub.ai/) — the official community hub for OpenMehdi-compatible skills.
+Want to add a new skill or integration? Head to [openmehdiHub](https://openmehdihub.ai/) — the official community hub for OpenMehdi-compatible skills.
 
 ---
 
@@ -110,7 +106,7 @@ Here's where we're investing right now. Contributions in these areas have the hi
 |---|---|
 | 🔴 High | **Stability** — Edge cases in WhatsApp & Telegram channel connections |
 | 🟠 Medium | **UX** — Onboarding wizard improvements and clearer error messages |
-| 🟡 Medium | **Skills** — New skill contributions via [ClawHub](https://clawhub.ai/) |
+| 🟡 Medium | **Skills** — New skill contributions |
 | 🟢 Ongoing | **Performance** — Token usage optimization and compaction logic |
 
 Looking for a starting point? Browse issues tagged [`good first issue`](https://github.com/openmehdi/openmehdi/issues?q=label%3A%22good+first+issue%22) on GitHub.
@@ -147,7 +143,7 @@ We take security seriously. Please report vulnerabilities **directly to the repo
 | macOS Desktop App | [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/macos) |
 | iOS App | [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/ios) |
 | Android App | [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/android) |
-| ClawHub | [openmehdi/clawhub](https://github.com/openmehdi/clawhub) |
+
 | Trust & Threat Model | [openmehdi/trust](https://github.com/openmehdi/trust) |
 
 Unsure which repo to use? Email **security@openmehdi.ai** and we'll route it to the right team.
