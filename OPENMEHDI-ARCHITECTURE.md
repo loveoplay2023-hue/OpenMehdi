@@ -1,4 +1,4 @@
-# 🦂 OpenMehdi — Guide d'Architecture
+# 🐍 OpenMehdi — Guide d'Architecture
 
 > Ce document décrit l'architecture technique d'**OpenMehdi** : un agent IA personnel souverain, modulaire et local-first, conçu par et pour la communauté.
 
