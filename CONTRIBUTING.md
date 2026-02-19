@@ -1,141 +1,172 @@
 # Contributing to OpenMehdi
 
-Welcome to the lobster tank! 🐍
+> **Build the future of personal AI — together.**
+> OpenMehdi is open-source, community-driven, and built on the belief that powerful AI should be accessible to everyone, everywhere.
+
+We're thrilled you're here. Whether you're fixing a typo, squashing a critical bug, or architecting a new multi-agent subsystem — **every contribution matters**. This guide will get you up to speed quickly.
+
+---
 
 ## Quick Links
 
-- **GitHub:** https://github.com/openmehdi/openmehdi
-- **Vision:** [`VISION.md`](VISION.md)
-- **Discord:** https://discord.gg/qkhbAGHRBT
-- **X/Twitter:** [@steipete](https://x.com/steipete) / [@openmehdi](https://x.com/openmehdi)
+| Resource | Link |
+|---|---|
+| Repository | [github.com/openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) |
+| Vision & Roadmap | [`VISION.md`](VISION.md) |
+| Community Discord | [discord.gg/qkhbAGHRBT](https://discord.gg/qkhbAGHRBT) |
+| X / Twitter | [@steipete](https://x.com/steipete) / [@openmehdi](https://x.com/openmehdi) |
 
-## Maintainers
+---
 
-- **Peter Steinberger** - Benevolent Dictator
-  - GitHub: [@steipete](https://github.com/steipete) · X: [@steipete](https://x.com/steipete)
+## Meet the Core Team
 
-- **Shadow** - Discord subsystem, Discord admin, Clawhub, all community moderation
-  - GitHub: [@thewilloftheshadow](https://github.com/thewilloftheshadow) · X: [@4shad0wed](https://x.com/4shad0wed)
+OpenMehdi is maintained by a passionate group of engineers, designers, and community builders from around the world.
 
-- **Vignesh** - Memory (QMD), formal modeling, TUI, IRC, and Lobster
-  - GitHub: [@vignesh07](https://github.com/vignesh07) · X: [@\_vgnsh](https://x.com/_vgnsh)
+| Maintainer | Area of Ownership |
+|---|---|
+| **[Peter Steinberger](https://github.com/steipete)** — [@steipete](https://x.com/steipete) | Project Lead & Architecture |
+| **[Shadow](https://github.com/thewilloftheshadow)** — [@4shad0wed](https://x.com/4shad0wed) | Discord, Community & Clawhub |
+| **[Vignesh](https://github.com/vignesh07)** — [@_vgnsh](https://x.com/_vgnsh) | Memory (QMD), TUI, IRC & Lobster |
+| **[Jos](https://github.com/joshp123)** — [@jjpcodes](https://x.com/jjpcodes) | Telegram, API & Nix Mode |
+| **[Ayaan Zaidi](https://github.com/obviyus)** — [@0bviyus](https://x.com/0bviyus) | Telegram Subsystem & iOS App |
+| **[Tyler Yust](https://github.com/tyler6204)** — [@tyleryust](https://x.com/tyleryust) | Agents/Subagents, Cron & macOS App |
+| **[Mariano Belinky](https://github.com/mbelinky)** — [@belimad](https://x.com/belimad) | iOS App & Security |
+| **[Seb Slight](https://github.com/sebslight)** — [@sebslig](https://x.com/sebslig) | Docs, Agent Reliability & Runtime |
+| **[Christoph Nakazawa](https://github.com/cpojer)** — [@cnakazawa](https://x.com/cnakazawa) | JavaScript Infrastructure |
+| **[Gustavo Madeira Santana](https://github.com/gumadeiras)** — [@gumadeiras](https://x.com/gumadeiras) | Multi-Agents, CLI & Web UI |
 
-- **Jos** - Telegram, API, Nix mode
-  - GitHub: [@joshp123](https://github.com/joshp123) · X: [@jjpcodes](https://x.com/jjpcodes)
-
-- **Ayaan Zaidi** - Telegram subsystem, iOS app
-  - GitHub: [@obviyus](https://github.com/obviyus) · X: [@0bviyus](https://x.com/0bviyus)
-
-- **Tyler Yust** - Agents/subagents, cron, BlueBubbles, macOS app
-  - GitHub: [@tyler6204](https://github.com/tyler6204) · X: [@tyleryust](https://x.com/tyleryust)
-
-- **Mariano Belinky** - iOS app, Security
-  - GitHub: [@mbelinky](https://github.com/mbelinky) · X: [@belimad](https://x.com/belimad)
-
-- **Seb Slight** - Docs, Agent Reliability, Runtime Hardening
-  - GitHub: [@sebslight](https://github.com/sebslight) · X: [@sebslig](https://x.com/sebslig)
-
-- **Christoph Nakazawa** - JS Infra
-  - GitHub: [@cpojer](https://github.com/cpojer) · X: [@cnakazawa](https://x.com/cnakazawa)
-
-- **Gustavo Madeira Santana** - Multi-agents, CLI, web UI
-  - GitHub: [@gumadeiras](https://github.com/gumadeiras) · X: [@gumadeiras](https://x.com/gumadeiras)
+---
 
 ## How to Contribute
 
-1. **Bugs & small fixes** → Open a PR!
-2. **New features / architecture** → Start a [GitHub Discussion](https://github.com/openmehdi/openmehdi/discussions) or ask in Discord first
-3. **Questions** → Discord #setup-help
+Contributing to OpenMehdi is designed to be **fast, clear, and rewarding**. Here's how to get started:
 
-## Before You PR
+### 1. Bug Fixes & Small Improvements
+Spotted something broken? Have a quick fix? **Open a PR directly** — no need to ask for permission first. We review actively and merge fast.
 
-- Test locally with your OpenMehdi instance
-- Run tests: `pnpm build && pnpm check && pnpm test`
-- Ensure CI checks pass
-- Keep PRs focused (one thing per PR; do not mix unrelated concerns)
-- Describe what & why
+### 2. New Features & Architectural Changes
+Big ideas deserve a conversation first. Start a [GitHub Discussion](https://github.com/openmehdi/openmehdi/discussions) or drop by **#proposals** on Discord. This ensures your effort lands in the right direction.
 
-## Control UI Decorators
+### 3. Questions & Support
+Stuck on setup or configuration? Head to **#setup-help** on Discord — our community responds quickly.
 
-The Control UI uses Lit with **legacy** decorators (current Rollup parsing does not support
-`accessor` fields required for standard decorators). When adding reactive fields, keep the
-legacy style:
+### 4. Skills & Integrations
+Want to add a new skill or integration? Head to [ClawHub](https://clawhub.ai/) — the official community hub for OpenMehdi-compatible skills.
+
+---
+
+## Pull Request Checklist
+
+Before submitting your PR, make sure you:
+
+- [ ] Tested your changes locally on your OpenMehdi instance
+- [ ] Ran the full test suite: `pnpm build && pnpm check && pnpm test`
+- [ ] Confirmed all CI checks pass
+- [ ] Kept the PR focused — **one clear goal per PR** (no mixed concerns)
+- [ ] Wrote a clear description: **what** you changed and **why**
+
+> **Pro tip:** Small, focused PRs get reviewed and merged significantly faster than large ones.
+
+---
+
+## Technical Notes: Control UI Decorators
+
+The Control UI is built with **Lit** using **legacy decorators**. The current Rollup parser does not support the `accessor` fields required by standard decorators.
+
+When adding reactive fields, always use the legacy style:
 
 ```ts
-@state() foo = "bar";
-@property({ type: Number }) count = 0;
+@state()
+foo = "bar";
+
+@property({ type: Number })
+count = 0;
 ```
 
-The root `tsconfig.json` is configured for legacy decorators (`experimentalDecorators: true`)
-with `useDefineForClassFields: false`. Avoid flipping these unless you are also updating the UI
-build tooling to support standard decorators.
+The root `tsconfig.json` is pre-configured with `experimentalDecorators: true` and `useDefineForClassFields: false`. Please do not change these settings unless you are also upgrading the UI build toolchain to support standard decorators.
 
-## AI/Vibe-Coded PRs Welcome! 🤖
+---
 
-Built with Codex, Claude, or other AI tools? **Awesome - just mark it!**
+## AI-Assisted Contributions Welcome 🤖
 
-Please include in your PR:
+Built your contribution with Codex, Claude, Cursor, or another AI tool? **Fantastic — we love it.** AI-assisted PRs are first-class citizens in OpenMehdi.
 
-- [ ] Mark as AI-assisted in the PR title or description
-- [ ] Note the degree of testing (untested / lightly tested / fully tested)
-- [ ] Include prompts or session logs if possible (super helpful!)
-- [ ] Confirm you understand what the code does
+All we ask is **transparency**. Please include in your PR:
 
-AI PRs are first-class citizens here. We just want transparency so reviewers know what to look for.
+- [ ] An "AI-assisted" label in the PR title or description
+- [ ] The degree of testing (untested / lightly tested / fully tested)
+- [ ] Prompts or session logs if available (extremely helpful for reviewers!)
+- [ ] Confirmation that you understand and own the code being submitted
 
-## Current Focus & Roadmap 🗺
+Transparency helps reviewers know what to focus on — that's it.
 
-We are currently prioritizing:
+---
 
-- **Stability**: Fixing edge cases in channel connections (WhatsApp/Telegram).
-- **UX**: Improving the onboarding wizard and error messages.
-- **Skills**: For skill contributions, head to [ClawHub](https://clawhub.ai/) — the community hub for OpenMehdi skills.
-- **Performance**: Optimizing token usage and compaction logic.
+## Current Focus & Roadmap 🗺️
 
-Check the [GitHub Issues](https://github.com/openmehdi/openmehdi/issues) for "good first issue" labels!
+Here's where we're investing right now. Contributions in these areas have the highest impact:
 
-## Maintainers
+| Priority | Focus Area |
+|---|---|
+| 🔴 High | **Stability** — Edge cases in WhatsApp & Telegram channel connections |
+| 🟠 Medium | **UX** — Onboarding wizard improvements and clearer error messages |
+| 🟡 Medium | **Skills** — New skill contributions via [ClawHub](https://clawhub.ai/) |
+| 🟢 Ongoing | **Performance** — Token usage optimization and compaction logic |
 
-We're selectively expanding the maintainer team.
-If you're an experienced contributor who wants to help shape OpenMehdi's direction — whether through code, docs, or community — we'd like to hear from you.
+Looking for a starting point? Browse issues tagged [`good first issue`](https://github.com/openmehdi/openmehdi/issues?q=label%3A%22good+first+issue%22) on GitHub.
 
-Being a maintainer is a responsibility, not an honorary title. We expect active, consistent involvement — triaging issues, reviewing PRs, and helping move the project forward.
+---
 
-Still interested? Email contributing@openmehdi.ai with:
+## Become a Maintainer
 
-- Links to your PRs on OpenMehdi (if you don't have any, start there first)
-- Links to open source projects you maintain or actively contribute to
-- Your GitHub, Discord, and X/Twitter handles
-- A brief intro: background, experience, and areas of interest
-- Languages you speak and where you're based
-- How much time you can realistically commit
+We are **selectively growing** the OpenMehdi maintainer team. If you are an experienced contributor who wants to actively shape the project's direction — through code, documentation, or community leadership — we'd love to hear from you.
 
-We welcome people across all skill sets — engineering, documentation, community management, and more.
-We review every human-only-written application carefully and add maintainers slowly and deliberately.
-Please allow a few weeks for a response.
+**What being a maintainer means:**
+This is an active, ongoing responsibility — not an honorary title. Maintainers are expected to triage issues, review PRs, and contribute consistently to the project's momentum.
 
-## Report a Vulnerability
+**To apply**, email **contributing@openmehdi.ai** with the following:
 
-We take security reports seriously. Report vulnerabilities directly to the repository where the issue lives:
+1. Links to your merged PRs on OpenMehdi *(don't have any yet? start there first)*
+2. Links to open-source projects you maintain or actively contribute to
+3. Your GitHub, Discord, and X/Twitter handles
+4. A brief intro: your background, experience, and areas of interest
+5. Languages you speak and where you're based
+6. A realistic estimate of how much time you can commit
 
-- **Core CLI and gateway** — [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi)
-- **macOS desktop app** — [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/macos)
-- **iOS app** — [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/ios)
-- **Android app** — [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/android)
-- **ClawHub** — [openmehdi/clawhub](https://github.com/openmehdi/clawhub)
-- **Trust and threat model** — [openmehdi/trust](https://github.com/openmehdi/trust)
+We welcome contributors across all disciplines — engineering, documentation, community management, and more. Applications are reviewed carefully and maintainers are added **slowly and deliberately**. Please allow a few weeks for a response.
 
-For issues that don't fit a specific repo, or if you're unsure, email **security@openmehdi.ai** and we'll route it.
+---
 
-### Required in Reports
+## Reporting a Security Vulnerability
 
-1. **Title**
-2. **Severity Assessment**
-3. **Impact**
-4. **Affected Component**
-5. **Technical Reproduction**
-6. **Demonstrated Impact**
-7. **Environment**
-8. **Remediation Advice**
+We take security seriously. Please report vulnerabilities **directly to the repository** where the issue lives — do not open a public issue.
 
-Reports without reproduction steps, demonstrated impact, and remediation advice will be deprioritized. Given the volume of AI-generated scanner findings, we must ensure we're receiving vetted reports from researchers who understand the issues.
+| Component | Repository |
+|---|---|
+| Core CLI & Gateway | [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) |
+| macOS Desktop App | [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/macos) |
+| iOS App | [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/ios) |
+| Android App | [openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) (apps/android) |
+| ClawHub | [openmehdi/clawhub](https://github.com/openmehdi/clawhub) |
+| Trust & Threat Model | [openmehdi/trust](https://github.com/openmehdi/trust) |
+
+Unsure which repo to use? Email **security@openmehdi.ai** and we'll route it to the right team.
+
+### Required Fields in a Security Report
+
+To help us triage efficiently, please include:
+
+1. **Title** — A clear, descriptive name for the vulnerability
+2. **Severity Assessment** — Your evaluation of the risk level
+3. **Impact** — What can an attacker achieve?
+4. **Affected Component** — Which module, file, or feature is impacted?
+5. **Technical Reproduction** — Step-by-step instructions to reproduce
+6. **Demonstrated Impact** — Proof-of-concept or evidence
+7. **Environment** — OS, version, configuration details
+8. **Remediation Advice** — Your suggested fix or mitigation
+
+> Reports without reproduction steps, demonstrated impact, and remediation advice will be deprioritized. Given the volume of AI-generated scanner findings we receive, we must prioritize vetted reports from researchers who genuinely understand the issue.
+
+---
+
+*Thank you for helping make OpenMehdi better for everyone. We can't wait to see what you build.*
