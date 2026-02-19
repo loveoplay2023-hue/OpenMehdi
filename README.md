@@ -1,4 +1,4 @@
-# 🐍OpenMehdi — Personal AI Assistant
+# 🦞 OpenMehdi — Personal AI Assistant
 
 <p align="center">
     <picture>
