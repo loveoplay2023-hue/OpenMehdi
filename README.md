@@ -21,34 +21,36 @@
 
 ---
 
-### 🚀 De l'Assistant au Co-équipier : L'évolution souveraine d'OpenMehdi
+### 🚀 L'assistant IA souverain made in Maroc 🇲🇦
 
-OpenMehdi n'est plus un simple assistant. Inspiré par l'architecture agile de **ZeroClaw** et les prouesses de **ClawWork**, OpenMehdi est un agent IA souverain capable de gérer des workflows complexes en toute autonomie.
+**OpenMehdi** est un agent IA personnel, multilingue et multi-canal, conçu pour fonctionner entièrement en local. Il orchestre une flotte d'agents autonomes pour gérer votre vie numérique — santé, trading, immobilier, géophysique — sans jamais compromettre votre vie privée.
 
 #### 🌟 Pourquoi OpenMehdi ?
-- **Architecture ZeroClaw** : Intégration profonde avec `clawdb` pour une gestion d'état immuable et performante.
-- **Souveraineté Totale** : Vos données restent dans votre sandbox Docker.
-- **Support Darija/Arabe** : Optimisé pour le contexte marocain et international.
-- **Modularité Extrême** : Ajoutez des "Skills" comme des pièces de LEGO.
+
+- **🏗️ Architecture Modulaire** : Des "Skills" composables que vous activez ou désactivez à la demande.
+- **🔒 Souveraineté Totale** : Vos données restent dans votre sandbox Docker, sur votre propre matériel.
+- **🌍 Support Darija/Arabe** : Optimisé pour le contexte marocain — AR, FR, EN, Darija natif.
+- **⚡ Local-First** : Aucune donnée n'est envoyée à un serveur externe sans votre consentement explicite.
+- **🤖 Multi-Agent** : Coordination intelligente d'agents spécialisés (Santé, Trading BVC, Immobilier, Géo).
 
 ---
 
 ### 📦 Installation Express
 
 ```bash
-# Clone the repository
+# Cloner le dépôt
 git clone https://github.com/loveoplay2023-hue/OpenMehdi.git
 
-# Install dependencies
+# Installer les dépendances
 pnpm install
 
-# Build & Run
+# Build & Démarrer
 pnpm run build && pnpm start
 ```
 
 ---
 
-### 🐍 Star History Pro
+### 🐍 Star History
 
 <p align="center">
   <a href="https://star-history.com/#loveoplay2023-hue/OpenMehdi&Timeline">
@@ -60,7 +62,7 @@ pnpm run build && pnpm start
 
 ### 🤝 Contribution
 
-Rejoignez l'aventure ! Consultez notre [CONTRIBUTING.md](./CONTRIBUTING.md) pour découvrir comment intégrer l'architecture ZeroClaw dans vos agents.
+Rejoignez l'aventure ! Consultez notre [CONTRIBUTING.md](./CONTRIBUTING.md) pour découvrir comment contribuer au projet OpenMehdi.
 
 ---
 
