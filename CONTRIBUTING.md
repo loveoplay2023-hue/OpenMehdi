@@ -11,7 +11,7 @@ We're thrilled you're here. Whether you're fixing a typo, squashing a critical b
 
 | Resource | Link |
 |---|---|
-| Repository | [github.com/openmehdi/openmehdi](https://github.com/openmehdi/openmehdi) |
+| Repository | [github.com/openmehdi/openmehdi](https://github.com/openmehdi) |
 | Vision & Roadmap | [`VISION.md`](VISION.md) |
 | Community Discord | [discord.gg/qkhbAGHRBT](https://discord.gg/qkhbAGHRBT) |
 | X / Twitter | [@steipete](https://x.com/steipete) / [@openmehdi](https://x.com/openmehdi) |
