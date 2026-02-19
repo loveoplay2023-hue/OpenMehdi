@@ -19,7 +19,7 @@
 
 ### 🚀 De l'Assistant au Co-équipier : L'évolution souveraine d'OpenMehdi
 
-**OpenMehdi** n'est plus un simple assistant. Inspiré par les prouesses économiques de [ClawWork](https://github.com/HKUDS/ClawWork), OpenMehdi transforme votre infrastructure locale en une véritable **force de travail autonome**. 
+**OpenMehdi** n'est plus un simple assistant.OpenMehdi transforme votre infrastructure locale en une véritable **force de travail autonome**. 
 
 C'est un écosystème d'agents IA hautement performants qui s'exécutent sur **vos propres appareils**, garantissant une confidentialité totale tout en produisant une valeur économique réelle.
 
@@ -56,7 +56,6 @@ Vos agents OpenMehdi peuvent désormais être configurés pour :
 - **[Passerelle Local-first](https://docs.openmehdi.ai/gateway)** — Contrôle total des sessions et outils.
 - **[Talk Mode & Voice Wake](https://docs.openmehdi.ai/nodes/talk)** — Communication vocale fluide sur macOS/iOS/Android.
 - **[Live Canvas](https://docs.openmehdi.ai/platforms/mac/canvas)** — Espace de travail visuel piloté par les agents.
-- **[Economic Dashboard](https://hkuds.github.io/ClawWork/)** — Visualisation en temps réel de la rentabilité de vos agents (intégration compatible).
 
 ---
 
@@ -84,4 +83,4 @@ Rejoignez l'élite des bâtisseurs d'IA souveraine.
 - [Documentation](https://docs.openmehdi.ai)
 - [@openmehdi](https://x.com/openmehdi)
 
-*Inspiré par ClawWork et propulsé par la communauté.* 🤖
+*Propulsé par la communauté.* 🤖
