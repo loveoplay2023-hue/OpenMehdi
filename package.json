@@ -1,5 +1,19 @@
 {
   "name": "openmehdi",
+  "version": "2026.2.19",
+  "description": "Assistant IA personnel souverain. Multilingue (AR/FR/EN/Darija), multi-agent, local-first. Santé, Trading BVC, Immobilier, Géophysique.",
+  "homepage": "https://github.com/loveoplay2023-hue/OpenMehdi#readme",
+  "bugs": {
+    "url": "https://github.com/loveoplay2023-hue/OpenMehdi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loveoplay2023-hue/OpenMehdi.git"
+  }
+}
+
+{
+  "name": "openmehdi",
   "version": "2026.2.18",
   "description": "Multi-channel AI gateway with extensible messaging integrations",
   "keywords": [],
