@@ -1,4 +1,5 @@
 import {
+  listAgentEntries,
   resolveAgentDir,
   resolveAgentWorkspaceDir,
   resolveDefaultAgentId,
@@ -31,14 +32,7 @@ export type AgentSummary = {
 type AgentEntry = NonNullable<NonNullable<OpenMehdiConfig["agents"]>["list"]>[number];
 
 export type AgentIdentity = AgentIdentityFile;
-
-export function listAgentEntries(cfg: OpenMehdiConfig): AgentEntry[] {
-  const list = cfg.agents?.list;
-  if (!Array.isArray(list)) {
-    return [];
-  }
-  return list.filter((entry): entry is AgentEntry => Boolean(entry && typeof entry === "object"));
-}
+export { listAgentEntries };
 
 export function findAgentEntryIndex(list: AgentEntry[], agentId: string): number {
   const id = normalizeAgentId(agentId);
